@@ -6,6 +6,6 @@ public interface BookLendingService {
 
     void addNewLend(long id,boolean availability);
 
-    void showAvailability(long id);
+    boolean showAvailability(long id);
 
 }

@@ -2,10 +2,15 @@ package com.vertex;
 
 import com.vertex.model.Book;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.vertex.model.Book;
 import com.vertex.model.LendingBooks;
+import com.vertex.service.BookLendingService;
+import com.vertex.service.BookService;
+import com.vertex.service.impl.BookLendingServiceImpl;
+import com.vertex.service.impl.BookServiceImpl;
 
 import java.util.Scanner;
 
@@ -14,6 +19,8 @@ public class Main {
 //        String name;
 //        int id;
         //EmployeeDaoIntrf dao=new EmployeeDaoImpl();
+        BookService bookService = new BookServiceImpl();
+        BookLendingService bookLendingService = new BookLendingServiceImpl();
         System.out.println("Welcome to Library Management System Uok!");
         System.out.println("Please choose an option.");
 
@@ -47,6 +54,14 @@ public class Main {
                         book.setTitle(title);
                         book.setCategory(category);
                         book.setAuthor(author);
+                        int i = bookService.addBook(book);
+                        if (i == 1){
+                                System.out.println("Successfully saved.");
+                        }
+                        else{
+                            System.out.println("Not saved in database.");
+                        }
+
                         break;
                 case 2:
                     System.out.println("Update an existing book.");
@@ -65,6 +80,7 @@ public class Main {
                     book.setTitle(title);
                     book.setCategory(category);
                     book.setAuthor(author);
+                    bookService.updateBook(ISBN,book);
                     break;
                 case 3:
                     System.out.println("Remove an existing book");
@@ -76,7 +92,7 @@ public class Main {
                     String removalConfirmation = sc.nextLine();
                     book.setBook_id((int) ISBN);
                     if(removalConfirmation == "Y"){
-
+                        bookService.deleteBook(ISBN);
                     }else{
 
                     }
@@ -90,7 +106,7 @@ public class Main {
                     ISBN = sc.nextLong();
                     sc.nextLine();
                     book.setBook_id((int) ISBN);
-                    if (lendingBooks.getAvailability() == 1) {
+                    if (bookLendingService.showAvailability(ISBN)) {
                         System.out.println("Book is available.");
                     } else {
                         System.out.println("Sorry. Book is unavailable");
@@ -108,6 +124,8 @@ public class Main {
                     break;
                 case 6:
                     System.out.println("List all available books.");
+                    ArrayList<Book> books = bookService.showAvailableBooks();
+                    System.out.println(books);
                     break;
 
                 case 7:
