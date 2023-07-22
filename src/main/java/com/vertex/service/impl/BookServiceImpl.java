@@ -17,12 +17,12 @@ public class BookServiceImpl implements BookService {
     @Override
     public int addBook(Book book) {
         try{
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO book (isbn, title, category, author) VALUES (?, ?, ?, ?, ?)");
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO book (isbn, title, category, author, availability) VALUES (?, ?, ?, ?, ?)");
             ps.setLong(1, book.getBook_id());
             ps.setString(2, book.getTitle());
             ps.setString(3, book.getCategory());
             ps.setString(4, book.getAuthor());
-            ps.setBoolean(5, book.isAvailability());
+            ps.setBoolean(5, true);
 
             return ps.executeUpdate();
 

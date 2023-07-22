@@ -81,9 +81,9 @@ public class Main {
 //        }while (true);
 
         BookService bookService = new BookServiceImpl();
-//        int i = bookService.addBook(new Book(1, "name", "cate", "auth"));
-//        int books = bookService.deleteBook(1);
+        int i = bookService.addBook(new Book(1, "name", "cate", "auth"));
+        Book books = bookService.showBook(1);
 //        ArrayList<Book> books = bookService.showAllBooks();
-//        System.out.println(books);
+        System.out.println(books);
     }
 }
