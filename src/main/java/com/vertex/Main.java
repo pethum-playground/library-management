@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        String name;
-        int id;
+//        String name;
+//        int id;
         //EmployeeDaoIntrf dao=new EmployeeDaoImpl();
         System.out.println("Welcome to Library Management System Uok!");
         System.out.println("Please choose an option.");
@@ -27,22 +27,25 @@ public class Main {
             switch (ch){
                 case 1:
                     Book book=new Book();
-                    System.out.println("Enter ID : ");
-                    id=sc.nextInt();
-                    System.out.println("Enter name ");
-                    name=sc.next();
-                    System.out.println("Enter Salary ");
-                    double salary=sc.nextDouble();
-                    System.out.println("Enter age");
-                    int age=sc.nextInt();
-                    emp.setId(id);
-                    emp.setName(name);
-                    emp.setSalary(salary);
-                    emp.setAge(age);
-                    dao.createEmployee(emp);
+                    System.out.println("Enter the ISBN : ");
+                    long ISBN = sc.nextLong();
+                    System.out.println("Enter the title : ");
+                    String name=sc.next();
+                    System.out.println("Enter the category : ");
+                    String category=sc.next();
+                    System.out.println("Enter the author : ");
+                    String author=sc.next();
+                    book.setBook_id((int) ISBN);
+                    book.setTitle(name);
+                    book.setCategory(category);
+                    book.setAuthor(author);
                     break;
                 case 2:
-                    dao.showAllEmployee();
+                    System.out.println("Enter id to update the details");
+                    int empid1=sc.nextInt();
+                    System.out.println("Enter the new name");
+                    name=sc.next();
+                    dao.updateEmployee(empid1,name);
                     break;
                 case 3:
                     System.out.println("Enter id to show the details ");
@@ -50,17 +53,31 @@ public class Main {
                     dao.showEmployeeBasedOnID(empid);
                     break;
                 case 4:
-                    System.out.println("Enter id to update the details");
-                    int empid1=sc.nextInt();
-                    System.out.println("Enter the new name");
-                    name=sc.next();
-                    dao.updateEmployee(empid1,name);
-                    break;
+                    LendingBooks lendingBooks = new LendingBooks();
+
+                    Scanner gettingISBN = new Scanner(System.in);
+                    Book book = new Book();
+
+                    System.out.println("Lending a book");
+                    System.out.println("Enter the ISBN");
+                    double isbnForLending = gettingISBN.nextDouble();
+
+
+                    if (lendingBooks.getAvailability() == 1) {
+                        System.out.println("Book is available.");
+                    } else {
+                        System.out.println("Sorry. Book is unavailable");
+                    }
+
                 case 5:
-                    System.out.println("Enter the id to delete");
-                    id=sc.nextInt();
-                    dao.deleteEmployee(id);
-                    break;
+                    //returning book
+                    System.out.println("Return a book");
+                    System.out.println("Enter the ISBN");
+
+                    double isbnForReturning = gettingISBN.nextDouble();
+
+                    //check whether there is an ISBN number as the user entered
+                    System.out.println("Book successfully returned");
 
                 case 6:
                     System.out.println("Thank you for using our Application !!!");
