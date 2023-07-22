@@ -29,72 +29,98 @@ public class Main {
 
             System.out.println("Enter Choice: ");
             int ch=sc.nextInt();
+            Book book=new Book();
             switch (ch){
                 case 1:
-                    Book book=new Book();
-                    System.out.println("Enter the ISBN : ");
-                    long ISBN = sc.nextLong();
-                    System.out.println("Enter the title : ");
-                    String name=sc.next();
-                    System.out.println("Enter the category : ");
-                    String category=sc.next();
-                    System.out.println("Enter the author : ");
-                    String author=sc.next();
+
+                        System.out.println("Enter the ISBN : ");
+                        long ISBN = sc.nextLong();
+                        sc.nextLine();
+
+                        System.out.println("Enter the title : ");
+                        String title=sc.nextLine();
+                        System.out.println("Enter the category : ");
+                        String category=sc.nextLine();
+                        System.out.println("Enter the author : ");
+                        String author=sc.nextLine();
+                        book.setBook_id((int) ISBN);
+                        book.setTitle(title);
+                        book.setCategory(category);
+                        book.setAuthor(author);
+                        break;
+                case 2:
+                    System.out.println("Update an existing book.");
+                    System.out.println("Enter the ISBN that need to update : ");
+                    ISBN=sc.nextLong();
+                    sc.nextLine();
+
+                    System.out.println("Update the book.");
+                    System.out.println("Enter the new title : ");
+                    title=sc.nextLine();
+                    System.out.println("Enter the new category : ");
+                    category=sc.nextLine();
+                    System.out.println("Enter the new author : ");
+                    author=sc.nextLine();
                     book.setBook_id((int) ISBN);
-                    book.setTitle(name);
+                    book.setTitle(title);
                     book.setCategory(category);
                     book.setAuthor(author);
                     break;
-                case 2:
-                    System.out.println("Enter id to update the details");
-                    int empid1=sc.nextInt();
-                    System.out.println("Enter the new name");
-                    name=sc.next();
-                    dao.updateEmployee(empid1,name);
-                    break;
                 case 3:
-                    System.out.println("Enter id to show the details ");
-                    int empid=sc.nextInt();
-                    dao.showEmployeeBasedOnID(empid);
+                    System.out.println("Remove an existing book");
+                    System.out.println("Enter the ISBN : ");
+                    ISBN = sc.nextLong();
+                    sc.nextLine();
+
+                    System.out.println("Are you sure you want to remove this book ? (Y/N)");
+                    String removalConfirmation = sc.nextLine();
+                    book.setBook_id((int) ISBN);
+                    if(removalConfirmation == "Y"){
+
+                    }else{
+
+                    }
                     break;
+
                 case 4:
                     LendingBooks lendingBooks = new LendingBooks();
 
-                    Scanner gettingISBN = new Scanner(System.in);
-                    Book book = new Book();
-
                     System.out.println("Lending a book");
-                    System.out.println("Enter the ISBN");
-                    double isbnForLending = gettingISBN.nextDouble();
-
-
+                    System.out.println("Enter the ISBN : ");
+                    ISBN = sc.nextLong();
+                    sc.nextLine();
+                    book.setBook_id((int) ISBN);
                     if (lendingBooks.getAvailability() == 1) {
                         System.out.println("Book is available.");
                     } else {
                         System.out.println("Sorry. Book is unavailable");
                     }
-
+                    break;
                 case 5:
-                    //returning book
+
                     System.out.println("Return a book");
-                    System.out.println("Enter the ISBN");
+                    System.out.println("Enter the ISBN : ");
 
-                    double isbnForReturning = gettingISBN.nextDouble();
-
-                    //check whether there is an ISBN number as the user entered
-                    System.out.println("Book successfully returned");
-
+                    ISBN = sc.nextLong();
+                    sc.nextLine();
+                    book.setBook_id((int) ISBN);
+                    System.out.println("Book successfully returned");
+                    break;
                 case 6:
+                    System.out.println("List all available books.");
+                    break;
+
+                case 7:
                     System.out.println("Thank you for using our Application !!!");
                     System.exit(0);
+                    break;
+
                 default:
                     System.out.println("Enter valid choice !");
                     break;
 
             }
         }while (true);
-        System.out.println("came");
-
 
     }
 
