@@ -1,13 +1,17 @@
 package com.vertex.service;
 
- public interface BookService {
-     void addBook();
+import com.vertex.model.Book;
+
+import java.util.ArrayList;
+
+public interface BookService {
+     int addBook(Book book);
     //show all employee
-     void showAllBooks();
+    ArrayList<Book> showAllBooks();
     //show employee based on id
-     void showAvailableBooks();
+    ArrayList<Book> showAvailableBooks();
     //update employee
-     void updateBook();
+    int updateBook(long id, Book book);
     //delete employee
-     void deleteBook();
+    Book deleteBook(long id);
 }
