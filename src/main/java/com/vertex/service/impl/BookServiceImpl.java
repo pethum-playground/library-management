@@ -47,6 +47,20 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public Book showBook(long id) {
+        try{
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT * FROM book WHERE "+id);
+
+            ArrayList<Book> books = getBooks(rs);
+            return books.get(0);
+        } catch (SQLException ex){
+            ex.printStackTrace();
+            return new Book();
+        }
+    }
+
+    @Override
     public ArrayList<Book> showAvailableBooks() {
         try{
             Statement statement = connection.createStatement();
