@@ -105,7 +105,7 @@ public class Main {
                     System.out.println("Enter the ISBN : ");
                     ISBN = sc.nextLong();
                     sc.nextLine();
-                    book.setBook_id((int) ISBN);
+                    book.setBook_id(ISBN);
                     if (bookLendingService.showAvailability(ISBN)) {
                         System.out.println("Book is available.");
                     } else {
@@ -119,7 +119,7 @@ public class Main {
 
                     ISBN = sc.nextLong();
                     sc.nextLine();
-                    book.setBook_id((int) ISBN);
+                    book.setBook_id(ISBN);
                     System.out.println("Book successfully returned");
                     break;
                 case 6:

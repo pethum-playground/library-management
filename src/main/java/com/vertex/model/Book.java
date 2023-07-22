@@ -1,7 +1,7 @@
 package com.vertex.model;
 
 public class Book {
-    private int book_id;
+    private long book_id;
     private String title;
     private String category;
     private String author;
@@ -43,7 +43,7 @@ public class Book {
         return book_id;
     }
 
-    public void setBook_id(int book_id) {
+    public void setBook_id(long book_id) {
         this.book_id = book_id;
     }
 
