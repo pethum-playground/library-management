@@ -1,7 +1,11 @@
 package com.vertex.service;
 
+import com.vertex.model.LendingBooks;
+
 public interface BookLendingService {
-    void addNewLend();
-    void showAvailability();
+
+    void addNewLend(LendingBooks book);
+
+    void showAvailability(LendingBooks book);
 
 }

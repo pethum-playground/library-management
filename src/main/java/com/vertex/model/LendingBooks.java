@@ -21,7 +21,7 @@ public class LendingBooks {
         this.book = book;
     }
 
-    public double getISBN() {
+    public long getISBN() {
         return ISBN;
     }
 
@@ -36,6 +36,8 @@ public class LendingBooks {
     public void setAvailability(int availability) {
         this.availability = availability;
     }
+
+
 
     @Override
     public String toString() {
