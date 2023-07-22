@@ -87,7 +87,7 @@ public class Book {
                 ", category='" + category + '\'' +
                 ", author='" + author + '\'' +
                 ", availability=" + availability +
-                '}';
+                "}\n";
     }
 }
 

@@ -107,6 +107,7 @@ public class Main {
                     sc.nextLine();
                     book.setBook_id(ISBN);
                     if (bookLendingService.showAvailability(ISBN)) {
+                        bookLendingService.addNewLend(ISBN,false);
                         System.out.println("Book is available.");
                     } else {
                         System.out.println("Sorry. Book is unavailable");
@@ -120,6 +121,7 @@ public class Main {
                     ISBN = sc.nextLong();
                     sc.nextLine();
                     book.setBook_id(ISBN);
+                    bookLendingService.addNewLend(ISBN,true);
                     System.out.println("Book successfully returned");
                     break;
                 case 6:

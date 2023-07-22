@@ -77,7 +77,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public int updateBook(long id, Book book) {
         try{
-            PreparedStatement ps = connection.prepareStatement("UPDATE book SET title = ?, category = ?, author = ? WHERE ?");
+            PreparedStatement ps = connection.prepareStatement("UPDATE book SET title = ?, category = ?, author = ? WHERE isbn = ?");
             ps.setString(1, book.getTitle());
             ps.setString(2, book.getCategory());
             ps.setString(3, book.getAuthor());
