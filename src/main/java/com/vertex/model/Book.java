@@ -6,6 +6,16 @@ public class Book {
     private String category;
     private String author;
 
+    public Book(){
+
+    }
+    public Book(int book_id, String title, String category, String author) {
+        this.book_id = book_id;
+        this.title = title;
+        this.category = category;
+        this.author = author;
+    }
+
     public long getBook_id() {
         return book_id;
     }
