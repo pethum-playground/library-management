@@ -5,15 +5,17 @@ public class Book {
     private String title;
     private String category;
     private String author;
+    private boolean availability;
 
     public Book(){
 
     }
-    public Book(int book_id, String title, String category, String author) {
+    public Book(int book_id, String title, String category, String author, boolean availability) {
         this.book_id = book_id;
         this.title = title;
         this.category = category;
         this.author = author;
+        this.availability = availability;
     }
 
     public long getBook_id() {
@@ -46,6 +48,25 @@ public class Book {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public boolean isAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(boolean availability) {
+        this.availability = availability;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "book_id=" + book_id +
+                ", title='" + title + '\'' +
+                ", category='" + category + '\'' +
+                ", author='" + author + '\'' +
+                ", availability=" + availability +
+                '}';
     }
 }
 

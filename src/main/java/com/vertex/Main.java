@@ -1,11 +1,14 @@
 package com.vertex;
 
+import com.vertex.service.BookService;
+import com.vertex.service.impl.BookServiceImpl;
 import com.vertex.util.DBConnection;
 
 import java.sql.Connection;
 
 import com.vertex.model.Book;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -18,14 +21,14 @@ public class Main {
         System.out.println("Please choose an option.");
 
         Scanner sc=new Scanner(System.in);
-        do{
-            System.out.println("1. Add a new book\n" +
-                    "2. Update an existing book\n" +
-                    "3. Remove an existing book \n" +
-                    "4. Lend a book\n" +
-                    "5. Return a book\n" +
-                    "6. List all available books\n" +
-                    "7. Exit\n");
+//        do{
+//            System.out.println("1. Add a new book\n" +
+//                    "2. Update an existing book\n" +
+//                    "3. Remove an existing book \n" +
+//                    "4. Lend a book\n" +
+//                    "5. Return a book\n" +
+//                    "6. List all available books\n" +
+//                    "7. Exit\n");
 
 //            System.out.println("Enter Choice: ");
 //            int ch=sc.nextInt();
@@ -75,6 +78,11 @@ public class Main {
 //                    break;
 //
 //            }
-        }while (true);
+//        }while (true);
+
+        BookService bookService = new BookServiceImpl();
+//        int i = bookService.addBook(new Book(1, "name", "cate", "auth"));
+        ArrayList<Book> books = bookService.showAllBooks();
+        System.out.println(books);
     }
 }
