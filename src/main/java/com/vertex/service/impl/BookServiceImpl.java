@@ -18,7 +18,7 @@ public class BookServiceImpl implements BookService {
     public int addBook(Book book) {
         try{
             PreparedStatement ps = connection.prepareStatement("INSERT INTO book (isbn, title, category, author) VALUES (?, ?, ?, ?, ?)");
-            ps.setInt(1, (int) book.getBook_id());
+            ps.setLong(1, book.getBook_id());
             ps.setString(2, book.getTitle());
             ps.setString(3, book.getCategory());
             ps.setString(4, book.getAuthor());
@@ -61,13 +61,39 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void updateBook(int id) {
+    public int updateBook(long id, Book book) {
+        try{
+            PreparedStatement ps = connection.prepareStatement("UPDATE book SET title = ?, category = ?, author = ? WHERE ?");
+            ps.setString(1, book.getTitle());
+            ps.setString(2, book.getCategory());
+            ps.setString(3, book.getAuthor());
+            ps.setLong(4, id);
 
+            return ps.executeUpdate();
+
+        } catch (SQLException ex){
+            ex.printStackTrace();
+            return -1;
+        }
     }
 
     @Override
-    public void deleteBook(int id) {
+    public Book deleteBook(long id) {
+        try{
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT * FROM book WHERE "+id);
 
+            PreparedStatement ps = connection.prepareStatement("DELETE FROM book WHERE ?");
+            ps.setLong(1, id);
+
+            ps.executeUpdate();
+
+            ArrayList<Book> books = getBooks(rs);
+            return books.get(0);
+        } catch (SQLException ex){
+            ex.printStackTrace();
+            return new Book();
+        }
     }
 
     private ArrayList<Book> getBooks(ResultSet rs) throws SQLException{

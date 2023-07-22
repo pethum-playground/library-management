@@ -11,7 +11,7 @@ public interface BookService {
     //show employee based on id
     ArrayList<Book> showAvailableBooks();
     //update employee
-     void updateBook(int id);
+    int updateBook(long id, Book book);
     //delete employee
-     void deleteBook(int id);
+    Book deleteBook(long id);
 }

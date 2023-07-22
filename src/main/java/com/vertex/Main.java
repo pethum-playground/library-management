@@ -82,7 +82,8 @@ public class Main {
 
         BookService bookService = new BookServiceImpl();
 //        int i = bookService.addBook(new Book(1, "name", "cate", "auth"));
-        ArrayList<Book> books = bookService.showAllBooks();
-        System.out.println(books);
+//        int books = bookService.deleteBook(1);
+//        ArrayList<Book> books = bookService.showAllBooks();
+//        System.out.println(books);
     }
 }

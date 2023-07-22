@@ -10,6 +10,27 @@ public class Book {
     public Book(){
 
     }
+
+    public Book(String title, String category, String author) {
+        this.title = title;
+        this.category = category;
+        this.author = author;
+    }
+
+    public Book(int book_id, String title, String category, String author) {
+        this.book_id = book_id;
+        this.title = title;
+        this.category = category;
+        this.author = author;
+    }
+
+    public Book(String title, String category, String author, boolean availability) {
+        this.title = title;
+        this.category = category;
+        this.author = author;
+        this.availability = availability;
+    }
+
     public Book(int book_id, String title, String category, String author, boolean availability) {
         this.book_id = book_id;
         this.title = title;
