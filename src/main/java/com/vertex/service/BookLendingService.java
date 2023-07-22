@@ -4,8 +4,8 @@ import com.vertex.model.LendingBooks;
 
 public interface BookLendingService {
 
-    void addNewLend(LendingBooks book);
+    void addNewLend(long id,boolean availability);
 
-    void showAvailability(LendingBooks book);
+    void showAvailability(long id);
 
 }

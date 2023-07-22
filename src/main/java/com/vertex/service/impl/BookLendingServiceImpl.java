@@ -14,12 +14,12 @@ public class BookLendingServiceImpl implements BookLendingService {
     }
 
     @Override
-    public void addNewLend(LendingBooks book) {
+    public void addNewLend(long id, boolean availability) {
         try {
             String query = "update book set availability=? where isbn=?";
             PreparedStatement pst = connection.prepareStatement(query);
-            pst.setInt(1,book.getAvailability());
-            pst.setLong(2,book.getISBN());
+            pst.setBoolean(1,availability);
+            pst.setLong(2,id);
             int count = pst.executeUpdate();
             if(count!=0){
                 System.out.println("Employee details updated successfully.");
@@ -30,9 +30,9 @@ public class BookLendingServiceImpl implements BookLendingService {
   }
 
     @Override
-    public void showAvailability(LendingBooks book) {
+    public void showAvailability(long id) {
         try {
-            String query = "select availability from book where id = "+book.getISBN();
+            String query = "select availability from book where id = "+id;
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery(query);
             while (result.next()){
