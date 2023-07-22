@@ -1,7 +1,11 @@
 package com.vertex;
 
+import com.vertex.util.DBConnection;
+
+import java.sql.Connection;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("came");
+       Connection con =  DBConnection.getInstance().getConnection();
     }
 }
