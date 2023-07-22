@@ -32,7 +32,7 @@ public class BookLendingServiceImpl implements BookLendingService {
     @Override
     public boolean showAvailability(long id) {
         try {
-            String query = "select availability from book where id = "+id;
+            String query = "select availability from book where isbn = "+id;
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery(query);
             while (result.next()){
