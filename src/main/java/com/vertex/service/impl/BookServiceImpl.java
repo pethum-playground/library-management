@@ -97,7 +97,7 @@ public class BookServiceImpl implements BookService {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM book WHERE "+id);
 
-            PreparedStatement ps = connection.prepareStatement("DELETE FROM book WHERE ?");
+            PreparedStatement ps = connection.prepareStatement("DELETE FROM book WHERE isbn = ?");
             ps.setLong(1, id);
 
             ps.executeUpdate();

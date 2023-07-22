@@ -91,7 +91,7 @@ public class Main {
                     System.out.println("Are you sure you want to remove this book ? (Y/N)");
                     String removalConfirmation = sc.next();
                     book.setBook_id(ISBN);
-                    if(removalConfirmation == "Y"){
+                    if(removalConfirmation.equalsIgnoreCase("Y")){
                         bookService.deleteBook(ISBN);
                     }else{
 
