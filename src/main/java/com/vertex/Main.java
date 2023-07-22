@@ -89,7 +89,7 @@ public class Main {
                     sc.nextLine();
 
                     System.out.println("Are you sure you want to remove this book ? (Y/N)");
-                    String removalConfirmation = sc.nextLine();
+                    String removalConfirmation = sc.next();
                     book.setBook_id(ISBN);
                     if(removalConfirmation == "Y"){
                         bookService.deleteBook(ISBN);
