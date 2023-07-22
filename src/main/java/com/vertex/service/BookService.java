@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public interface BookService {
      int addBook(Book book);
+    Book showBook(long id);
     //show all employee
     ArrayList<Book> showAllBooks();
     //show employee based on id

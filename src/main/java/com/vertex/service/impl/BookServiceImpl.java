@@ -17,12 +17,12 @@ public class BookServiceImpl implements BookService {
     @Override
     public int addBook(Book book) {
         try{
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO book (isbn, title, category, author) VALUES (?, ?, ?, ?, ?)");
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO book (isbn, title, category, author, availability) VALUES (?, ?, ?, ?, ?)");
             ps.setLong(1, book.getBook_id());
             ps.setString(2, book.getTitle());
             ps.setString(3, book.getCategory());
             ps.setString(4, book.getAuthor());
-            ps.setBoolean(5, book.isAvailability());
+            ps.setBoolean(5, true);
 
             return ps.executeUpdate();
 
@@ -43,6 +43,20 @@ public class BookServiceImpl implements BookService {
         } catch (SQLException ex){
             ex.printStackTrace();
             return new ArrayList<>();
+        }
+    }
+
+    @Override
+    public Book showBook(long id) {
+        try{
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT * FROM book WHERE "+id);
+
+            ArrayList<Book> books = getBooks(rs);
+            return books.get(0);
+        } catch (SQLException ex){
+            ex.printStackTrace();
+            return new Book();
         }
     }
 
